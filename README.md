@@ -1,2 +1,2 @@
-# sn-volunteer
-Volunteer website
+# sn-volunteer-server
+Server side of SuiNing Volunteer website.
