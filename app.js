@@ -2,7 +2,9 @@ const express = require('express')
 const path = require('path')
 const bodyParser = require('body-parser')
 const expressValidation = require('express-validator')
+const session = require('express-session')
 
+const routes = require('./routes')
 const errorHandler = require('./handlers/errorHandlers')
 
 const app = express()
@@ -21,10 +23,14 @@ app.use(bodyParser.urlencoded({ extended: true }))
 // validate user input
 app.use(expressValidation())
 
+app.use(session({
+  secret: 'sn volunteer',
+  resave: false,
+  saveUninitialized: true
+}))
+
 // handle routes
-app.get('*', (req, res) => {
-  res.send('Hello Express!')
-})
+app.use('/', routes)
 
 // handle errors
 if (app.get('env') === 'development') {
