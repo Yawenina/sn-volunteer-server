@@ -30,7 +30,7 @@ app.use(session({
 }))
 
 // handle routes
-app.use('/', routes)
+app.use(routes)
 
 // handle errors
 if (app.get('env') === 'development') {
